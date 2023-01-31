@@ -87,18 +87,26 @@ ravenclawButton.addEventListener("click", () => {
 
 const createStudent = (event) => {
   event.preventDefault()
-  const student = document.querySelector("#form")
+  const student = document.querySelector("#inputform")
 
-  // const houseOptions = ["Slytherin", "Hufflepuff", "Gryffindor", "Ravenclaw"]
+  const houseOptions = ["Slytherin", "Hufflepuff", "Gryffindor", "Ravenclaw"]
+
+  let randVal = () => {
+    let x = Math.floor(Math.random() * houseOptions.length)
+    return houseOptions[x]
+  }
 
   const newStudent = {
     student: student.value, 
-  }
+    house: randVal(),
+    }
 
   houses.push(newStudent)
 
   showCards(houses)
 
+  let form = document.querySelector("form")
+  form.reset()
 } 
 
 const addButton = document.querySelector("#sort")
