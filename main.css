@@ -1,9 +1,38 @@
-body {
+/* body {
   display: flex;
   justify-content: center;
   align-content: center;
+} */
+
+.header {
+  font-size: 50px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#btn {
+  width: 200px;
 }
 
 #form {
-  width: 400px;
+  /* width: 3000px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.houses {
+  flex: 50%
+}
+
+.expelled {
+  flex: 50%
 }
