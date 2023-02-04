@@ -8,7 +8,6 @@ This project is a rendition of a Hogwarts Sorting Hat.
 - When a new student is added an object should be created and that object should be pushed into an array of students that then prints to the DOM.
 - House Images: When a new student is added, an image appears with the symbol that represents their house.
 - Expelled Students: Upon clicking the expel button, students are moved over to the expelled section. 
-- 
 
 ## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
 - [Check out the deployed site](https://madds-sorting-hat.netlify.com/)
