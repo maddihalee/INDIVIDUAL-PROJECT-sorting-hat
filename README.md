@@ -5,7 +5,7 @@ This project is a rendition of a Hogwarts Sorting Hat.
 
 
 ## Features <!-- List your app features using bullets! Do NOT use a paragraph. No one will read that! -->
-- When a new student is added an object should be created and that object should be pushed into an array of students that then prints to the DOM.
+- When a new student is added, an object is created and pushed into an array which is then shown on the DOM. 
 - House Images: When a new student is added, an image appears with the symbol that represents their house.
 - Expelled Students: Upon clicking the expel button, students are moved over to the expelled section. 
 
