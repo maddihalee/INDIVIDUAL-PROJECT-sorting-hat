@@ -122,6 +122,7 @@ const createStudent = (event) => {
 
   let form = document.querySelector("form")
   form.reset()
+  
 } 
 
 const addButton = document.querySelector("#sort")
@@ -129,15 +130,15 @@ addButton.addEventListener("click", createStudent)
 
 // Starting the sorting process
 
-// let startButton = document.querySelector("#btn")
-// let notVisible = document.querySelector("#page")
+let startButton = document.querySelector("#btn")
+let notVisible = document.querySelector("#page")
 
 
-// document.getElementById("page").style.display = "none"
+document.getElementById("page").style.display = "none"
 
-// startButton.addEventListener("click", () => {
-//   document.getElementById("page").style.display = "block"
-// })
+startButton.addEventListener("click", () => {
+  document.getElementById("page").style.display = "block"
+})
 
 
 // Showing Expelled Cards
@@ -181,4 +182,12 @@ housesDiv.addEventListener("click", (event) => {
   }
 })
 
-// expel
+// Blank Alert
+
+// const emptyForm = document.querySelector("#sort").addEventListener("click", () => {
+//   student = document.querySelector("#inputform")
+//   if (student.value.length === 0) {
+//     alert("Fill in the form first!")
+//     return false
+//   }
+// })
