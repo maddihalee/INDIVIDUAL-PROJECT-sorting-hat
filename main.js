@@ -110,15 +110,15 @@ addButton.addEventListener("click", createStudent)
 
 // Starting the sorting process
 
-// let startButton = document.querySelector("#btn")
-// let notVisible = document.querySelector("#page")
+let startButton = document.querySelector("#btn")
+let notVisible = document.querySelector("#page")
 
 
-// document.getElementById("page").style.display = "none"
+document.getElementById("page").style.display = "none"
 
-// startButton.addEventListener("click", () => {
-//   document.getElementById("page").style.display = "block"
-// })
+startButton.addEventListener("click", () => {
+  document.getElementById("page").style.display = "block"
+})
 
 
 // Showing Expelled Cards
@@ -130,7 +130,7 @@ const showExpelled = (array) => {
     <h5 class="card-header">${arr.student}</h5>
     <div class="card-body">
     <h5 class="card-title">Expelled</h5>
-      <p class="card-text">${arr.house}</p>
+      <p class="card-text">from ${arr.house}</p>
     </div>
   </div>`
   }
@@ -160,16 +160,4 @@ housesDiv.addEventListener("click", (event) => {
       } 
     }) 
   }
-})
-
-// Blank Alert
-
-const forms = document.querySelector("form")
-const text = document.querySelector("#inputform")
-
-form.addEventListener("submit", (e) => {
-  let textField = text.value
-  if (textField === "") {
-    alert("Fill in the form first!")
-  } 
 })
