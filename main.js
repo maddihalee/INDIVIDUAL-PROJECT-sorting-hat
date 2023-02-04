@@ -180,3 +180,5 @@ housesDiv.addEventListener("click", (event) => {
     }) 
   }
 })
+
+// expel
