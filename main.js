@@ -164,12 +164,3 @@ housesDiv.addEventListener("click", (event) => {
 
 // Blank Alert
 
-const forms = document.querySelector("form")
-const text = document.querySelector("#inputform")
-
-form.addEventListener("submit", (e) => {
-  let textField = text.value
-  if (textField === "") {
-    alert("Fill in the form first!")
-  } 
-})
