@@ -1,33 +1,7 @@
-const houses = [
-  {
-    id: 1,
-    student: "Harry Potter",
-    house: "Gryffindor"
-  },
-  {
-    id: 2,
-    student: "Cedric Diggory",
-    house: "Hufflepuff"
-  },
-  {
-    id: 3,
-    student: "Draco Malfoy",
-    house: "Slytherin"
-  },
-  {
-    id: 4,
-    student: "Luna Lovegood",
-    house: "Ravenclaw"
-  },
-]
+const houses = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"]
+const students = []
+const expelled = []
 
-const expelled = [
-  {
-    id: 5,
-    student: "Fred Weasley",
-    house: "Expelled"
-  }
-]
 
 const renderToDom = (divId, htmlToRender) => {
   const selectedDiv = document.querySelector(divId)
@@ -39,19 +13,19 @@ const renderToDom = (divId, htmlToRender) => {
 const showCards = (array) => {
   let domString = ""
   for (const arr of array) {
-    domString += `<div class="card">
-    <h5 class="card-header">${arr.student}</h5>
+    domString += `<div class="card" style="width: 18rem;">
+    <img src="${arr.image}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${arr.house}</h5>
-      <button id="expel--${arr.id}">Expel</button>
-      <p class="card-text"></p>
+      <p class="card-text">${arr.student}</p>
+      <a href="#" class="btn btn-primary" id="expel--${arr.id}">Expel</a>
     </div>
   </div>`
   }
   renderToDom(".houses", domString)
 }
 
-showCards(houses)
+// showCards(houses)
 
 
 // filtering function
@@ -75,50 +49,56 @@ const ravenclawButton = document.querySelector("#ravenclaw")
 const showAllButton = document.querySelector("#all")
 
 showAllButton.addEventListener("click", () => {
-  showCards(houses)
+  showCards(students)
 })
 
 hufflepuffButton.addEventListener("click", () => {
-  const hufflepuffFilter = houseFilter(houses, "Hufflepuff")
+  const hufflepuffFilter = houseFilter(students, "Hufflepuff")
   showCards(hufflepuffFilter)
 })
 
 slytherinButton.addEventListener("click", () => {
-  const slytherinFilter = houseFilter(houses, "Slytherin")
+  const slytherinFilter = houseFilter(students, "Slytherin")
   showCards(slytherinFilter)
 })
 
 gryffindorButton.addEventListener("click", () => {
-  const gryffindorFilter = houseFilter(houses, "Gryffindor")
+  const gryffindorFilter = houseFilter(students, "Gryffindor")
   showCards(gryffindorFilter)
 })
 
 ravenclawButton.addEventListener("click", () => {
-  const ravenclawFilter = houseFilter(houses, "Ravenclaw")
+  const ravenclawFilter = houseFilter(students, "Ravenclaw")
   showCards(ravenclawFilter)
 })
+
 
 // Add Student Function
 
 const createStudent = (event) => {
   event.preventDefault()
-  const student = document.querySelector("#inputform")
+  let studentIdCount = 1
 
-  const houseOptions = ["Slytherin", "Hufflepuff", "Gryffindor", "Ravenclaw"]
-
-  let randVal = () => {
-    let x = Math.floor(Math.random() * houseOptions.length)
-    return houseOptions[x]
-  }
 
   const newStudent = {
-    student: student.value, 
-    house: randVal(),
+    student: document.querySelector("#inputform").value,
+    house: houses[Math.floor(Math.random()*houses.length)],
+    id: studentIdCount
     }
 
-  houses.push(newStudent)
+    if(newStudent.house === "Gryffindor") {
+      newStudent.image = "https://m.media-amazon.com/images/I/71qheAe+f6L.jpg"
+    } else if (newStudent.house === "Hufflepuff") {
+      newStudent.image = "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88364/91134/Harry-Potter-Hufflepuff-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__21122.1507644096.jpg?c=2"
+    } else if (newStudent.house === "Slytherin") {
+      newStudent.image = "https://cdn11.bigcommerce.com/s-ydriczk/products/88362/images/91127/Harry-Potter-Slytherin-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__31920.1507640618.450.659.jpg?c=2"
+    } else if (newStudent.house === "Ravenclaw") {
+      newStudent.image = "https://m.media-amazon.com/images/I/61iys32RuAL.jpg"
+    }
 
-  showCards(houses)
+  students.push(newStudent)
+  studentIdCount++
+  showCards(students)
 
   let form = document.querySelector("form")
   form.reset()
@@ -130,15 +110,15 @@ addButton.addEventListener("click", createStudent)
 
 // Starting the sorting process
 
-let startButton = document.querySelector("#btn")
-let notVisible = document.querySelector("#page")
+// let startButton = document.querySelector("#btn")
+// let notVisible = document.querySelector("#page")
 
 
-document.getElementById("page").style.display = "none"
+// document.getElementById("page").style.display = "none"
 
-startButton.addEventListener("click", () => {
-  document.getElementById("page").style.display = "block"
-})
+// startButton.addEventListener("click", () => {
+//   document.getElementById("page").style.display = "block"
+// })
 
 
 // Showing Expelled Cards
@@ -150,7 +130,7 @@ const showExpelled = (array) => {
     <h5 class="card-header">${arr.student}</h5>
     <div class="card-body">
     <h5 class="card-title">Expelled</h5>
-      <p class="card-text"></p>
+      <p class="card-text">${arr.house}</p>
     </div>
   </div>`
   }
@@ -171,11 +151,11 @@ housesDiv.addEventListener("click", (event) => {
   if (event.target.id.includes("expel")) {
     const [, houseId] = event.target.id.split("--")
      
-    houses.forEach((item, index) => {
+    students.forEach((item, index) => {
       if (item.id === Number(houseId)) {
         expelled.push(item)
-        houses.splice(index, 1)
-        showCards(houses)
+        students.splice(index, 1)
+        showCards(students)
         showExpelled(expelled)
       } 
     }) 
@@ -184,10 +164,12 @@ housesDiv.addEventListener("click", (event) => {
 
 // Blank Alert
 
-// const emptyForm = document.querySelector("#sort").addEventListener("click", () => {
-//   student = document.querySelector("#inputform")
-//   if (student.value.length === 0) {
-//     alert("Fill in the form first!")
-//     return false
-//   }
-// })
+const forms = document.querySelector("form")
+const text = document.querySelector("#inputform")
+
+form.addEventListener("submit", (e) => {
+  let textField = text.value
+  if (textField === "") {
+    alert("Fill in the form first!")
+  } 
+})
