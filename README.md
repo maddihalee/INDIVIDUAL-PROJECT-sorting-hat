@@ -3,7 +3,6 @@
 
 This project is a rendition of a Hogwarts Sorting Hat.
 
-[View App](#your-link)
 
 ## Features <!-- List your app features using bullets! Do NOT use a paragraph. No one will read that! -->
 - When a new student is added an object should be created and that object should be pushed into an array of students that then prints to the DOM.
@@ -12,7 +11,7 @@ This project is a rendition of a Hogwarts Sorting Hat.
 - 
 
 ## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
-- [Check out the deployed site](#https://madds-sorting-hat.netlify.com/)
+- [Check out the deployed site](https://madds-sorting-hat.netlify.com/)
 
 
 ## Contributors
