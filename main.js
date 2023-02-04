@@ -43,7 +43,7 @@ const showCards = (array) => {
     <h5 class="card-header">${arr.student}</h5>
     <div class="card-body">
       <h5 class="card-title">${arr.house}</h5>
-      <button id="expel">Expel</button>
+      <button id="expel--${arr.id}">Expel</button>
       <p class="card-text"></p>
     </div>
   </div>`
@@ -148,7 +148,7 @@ const showExpelled = (array) => {
     domString += `<div class="card">
     <h5 class="card-header">${arr.student}</h5>
     <div class="card-body">
-      <h5 class="card-title">${arr.house}</h5>
+    <h5 class="card-title">Expelled</h5>
       <p class="card-text"></p>
     </div>
   </div>`
@@ -168,14 +168,15 @@ const housesDiv = document.querySelector(".houses")
 
 housesDiv.addEventListener("click", (event) => {
   if (event.target.id.includes("expel")) {
-    const houseId = event.target.id 
-    const indexOfHouse = houses.findIndex(
-      (obj) => obj.id === Number(houseId)
-      )
-      houses.splice(indexOfHouse, 1)
+    const [, houseId] = event.target.id.split("--")
+     
+    houses.forEach((item, index) => {
+      if (item.id === Number(houseId)) {
+        expelled.push(item)
+        houses.splice(index, 1)
+        showCards(houses)
+        showExpelled(expelled)
+      } 
+    }) 
   }
-  event.forEach((houseId) => {
-    
-  })
-  
 })
